@@ -6,22 +6,13 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('users')
-class User {
+@Entity('segments')
+class Segments {
   @PrimaryGeneratedColumn('increment')
-  id: string;
+  id: number;
 
   @Column()
-  name: string;
-
-  @Column()
-  email: string;
-
-  @Column()
-  password: string;
-
-  @Column()
-  avatar: string;
+  segment_name: string;
 
   @CreateDateColumn()
   created_at: Date;
@@ -30,4 +21,4 @@ class User {
   updated_at: Date;
 }
 
-export default User;
+export default Segments;
