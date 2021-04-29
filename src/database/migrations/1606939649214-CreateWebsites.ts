@@ -61,7 +61,7 @@ export default class CreateWebsites1606939649214 implements MigrationInterface {
           {
             name: 'publish_date',
             type: 'timestamp',
-            default: 'now()',
+            default: 0,
           },
           {
             name: 'created_at',
@@ -71,7 +71,7 @@ export default class CreateWebsites1606939649214 implements MigrationInterface {
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'now()',
+            default: 0,
           },
         ],
       }),

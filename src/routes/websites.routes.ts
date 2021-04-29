@@ -17,13 +17,20 @@ websitesRouter.get('/', async (request, response) => {
   return response.json(websites);
 });
 
+websitesRouter.get('/chunks', async (request, response) => {
+  // const { chunks } = request.params;
+  const websitesRepository = getCustomRepository(WebsitesRepository);
+  const websitesChunks = await websitesRepository.findChunks();
+
+  return response.json(websitesChunks);
+});
+
 websitesRouter.post('/', async (request, response) => {
   const {
     customer,
     plan,
     segment_id,
     website_address,
-    thumbnail,
     amount_paid,
     salesman,
   } = request.body;
@@ -35,7 +42,6 @@ websitesRouter.post('/', async (request, response) => {
     plan,
     segment_id,
     website_address,
-    thumbnail,
     amount_paid,
     salesman,
   });
