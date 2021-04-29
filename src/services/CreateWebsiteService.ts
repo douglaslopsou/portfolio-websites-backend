@@ -10,7 +10,7 @@ interface Request {
   plan: string;
   segment_id: string;
   website_address: string;
-  thumbnail: string;
+  thumbnail?: string;
   amount_paid: string;
   salesman: string;
 }
@@ -21,6 +21,7 @@ class CreateWebsiteService {
     plan,
     segment_id,
     website_address,
+    thumbnail,
     amount_paid,
     salesman,
   }: Request): Promise<Website> {
@@ -36,7 +37,7 @@ class CreateWebsiteService {
       throw new AppError('Website already registered');
     }
 
-    try {
+    /* try {
       const response = await axios.get(
         'https://www.googleapis.com/pagespeedonline/v5/runPagespeed',
         {
@@ -47,22 +48,24 @@ class CreateWebsiteService {
       const thumbnailGoogle =
         response.data.lighthouseResult.audits['final-screenshot'].details.data;
 
-      const website = websitesRepository.create({
-        customer,
-        plan,
-        segment_id,
-        website_address,
-        thumbnail: thumbnailGoogle,
-        amount_paid,
-        salesman,
-      });
-
-      await websitesRepository.save(website);
-
-      return website;
+      thumbnail = thumbnailGoogle;
     } catch (err) {
       throw new AppError('Error in generate thumbnail from Google API.', 401);
-    }
+    } */
+
+    const website = websitesRepository.create({
+      customer,
+      plan,
+      segment_id,
+      website_address,
+      thumbnail,
+      amount_paid,
+      salesman,
+    });
+
+    await websitesRepository.save(website);
+
+    return website;
   }
 }
 

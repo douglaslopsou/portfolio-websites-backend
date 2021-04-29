@@ -26,7 +26,7 @@ export default class CreateSegments1606939643139 implements MigrationInterface {
           {
             name: 'updated_at',
             type: 'timestamp',
-            default: 'now()',
+            default: 0,
           },
         ],
       }),
